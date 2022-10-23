@@ -1,11 +1,14 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Outlet } from 'react-router-dom'
+import { Navbar } from './Navbar'
+
 
 export const Home = () => {
     const navigate = useNavigate()
   return (
     <>
-    <div>Home Page</div>
+    <Navbar />
+    <Outlet />
     </>
   )
 }
