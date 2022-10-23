@@ -2,3 +2,8 @@ body {
   background: purple;
   color: white;
 }
+
+button {
+  background-color: white;
+  color: black;
+}

@@ -3,9 +3,11 @@ import React, { useEffect, useState } from 'react'
 export const Users = () => {
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(true)
+  const [page, setPage] = useState(1)
+  const usersPerPage = 5
 
   async function getUsers() {
-    const data = await fetch('https://randomuser.me/api/?page=3&results=500&seed=abc').then((response) => response.json())
+    const data = await fetch('https://randomuser.me/api/?page=1&results=50&seed=abc').then((response) => response.json())
     console.log(data);
   
     setUsers(data.results)
@@ -21,16 +23,44 @@ if (loading) {
 }
   return (
     <>
-      {users.map((user, index) => (
+      {users.slice((page - 1) * usersPerPage, page * usersPerPage).map((user, index) => (
         <div key={index}>
           <img src={user.picture.thumbnail} />
           <h2>{user.name.title} {user.name.first} {user.name.last}</h2>
           <p>Email : {user.email}</p>
           <p>Gender : {user.gender}</p>
           <p>Cell : {user.cell}</p>
-          <p>Location : {user.location.country} {user.location.city}</p>
+          <p>Location : {user.location.country}, {user.location.city}</p>
         </div>
       ))}
+      <button onClick={() => setPage((p) => p - 1)}
+        disabled={page <= 1}
+        style={
+          page <= 1
+            ? { backgroundColor: "grey", color: "rgba(0,0,0,0.2)", cursor: 'not-allowed'}
+            : null
+        }
+      >
+        Prev
+      </button>
+
+      {Array.from({ length: Math.ceil(users.length / usersPerPage) }, (value, index) => index + 1).map(
+        (each) => (
+          <button onClick={() => setPage(each)}>{each}</button>
+        )
+      )}
+
+      <button onClick={() => setPage((p) => p + 1)}
+        disabled={page >= users.length / usersPerPage}
+        style={
+         page >= users.length / usersPerPage
+            ? { backgroundColor: "gray", color: "rgba(0,0,0,0.2)", cursor: 'not-allowed' }
+            : null
+        }
+      >
+        Next
+      </button>
+      <p>Page {page} of {users.length}</p>
     </>
   )
 

@@ -8,6 +8,7 @@ export const Home = () => {
   return (
     <>
     <Navbar />
+    <h1>Welcome to Paginaton</h1>
     <Outlet />
     </>
   )
