@@ -19,10 +19,11 @@ export const Users = () => {
   }, [])
 
 if (loading) {
-  return <h2>Loading....</h2>
+  return <h2 style={{color: '#4f5069', fontSize: '50px'}}>Loading....</h2>
 }
   return (
     <>
+    <div className='users'>
       {users.slice((page - 1) * usersPerPage, page * usersPerPage).map((user, index) => (
         <div key={index}>
           <img src={user.picture.thumbnail} />
@@ -33,6 +34,8 @@ if (loading) {
           <p>Location : {user.location.country}, {user.location.city}</p>
         </div>
       ))}
+      </div>
+      <div className='btn-container'>
       <button onClick={() => setPage((p) => p - 1)}
         disabled={page <= 1}
         style={
@@ -60,7 +63,8 @@ if (loading) {
       >
         Next
       </button>
-      <p>Page {page} of {users.length}</p>
+      </div>
+      <p style={{color: '#4f5069', textAlign: 'center'}}>Page {page} of {users.length/usersPerPage}</p>
     </>
   )
 

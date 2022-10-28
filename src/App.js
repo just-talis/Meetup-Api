@@ -6,20 +6,22 @@ import { NoMatch } from "./components/NoMatch";
 import { Users } from "./components/Users";
 import './App.css';
 import { FallBack } from "./components/FallBack";
+import { Navbar } from "./components/Navbar";
 
 function App() {
   return (
-    <>
+    <div className="app">
     <ErrorBoundary FallbackComponent={FallBack}>
       <Routes>
-        <Route path="/" element={<Home />}>
+        <Route element={<Navbar />}>
+        <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="users" element={<Users  />} />
         </Route>
         <Route path="*" element={<NoMatch  />} />
       </Routes>
       </ErrorBoundary>
-    </>
+    </div>
   );
 }
 

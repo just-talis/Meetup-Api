@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Photo3 from './Photos/404-page.jpg'
 
 export const NoMatch = () => {
   return (
-    <div>
-      Page not found
+    <div className='error'>
+      <img src={Photo3} />
+      <p style={{fontSize: '40px', color: '#4f5069'}}>Page not found</p>
       <Link to='/'>Go back home</Link>
     </div>
   )
