@@ -26,7 +26,7 @@ if (loading) {
     <div className='users'>
       {users.slice((page - 1) * usersPerPage, page * usersPerPage).map((user, index) => (
         <div key={index}>
-          <img alt={`${user.name.first}'s picture`} src={user.picture.thumbnail} />
+          <img alt={`${user.name.first}`} src={user.picture.thumbnail} />
           <h2>{user.name.title} {user.name.first} {user.name.last}</h2>
           <p>Email : {user.email}</p>
           <p>Gender : {user.gender}</p>
