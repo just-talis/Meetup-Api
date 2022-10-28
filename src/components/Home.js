@@ -19,8 +19,8 @@ export const Home = () => {
         <div className='circle-two circle'></div>
         <div className='circle-three circle'></div>
         <div className='circle-four circle'></div>
-        <img src={Photo1} />
-        <img src={Photo2} />
+        <img alt='' src={Photo1} />
+        <img alt='' src={Photo2} />
       </div>
     </div>
     </>
